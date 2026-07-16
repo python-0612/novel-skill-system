@@ -84,7 +84,25 @@ graph TB
 
 ### 2. 安装技能
 
-#### 方法一：手动安装
+#### 方法一：npm一键安装（推荐）⭐
+
+```bash
+# 克隆仓库
+git clone https://github.com/python-0612/novel-skill-system.git
+
+# 进入目录
+cd novel-skill-system
+
+# 一键安装
+node install.js
+```
+
+或者直接运行：
+```bash
+npx novel-skill-opencode install
+```
+
+#### 方法二：手动安装
 
 **Windows系统：**
 ```powershell

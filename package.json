@@ -1,0 +1,23 @@
+{
+  "name": "novel-skill-opencode",
+  "version": "1.0.0",
+  "description": "小说创作技能一键安装工具 - OpenCode智能体系统",
+  "main": "install.js",
+  "bin": {
+    "novel-skill": "./cli.js"
+  },
+  "scripts": {
+    "postinstall": "node install.js",
+    "uninstall": "node uninstall.js"
+  },
+  "keywords": ["opencode", "novel", "skill", "ai", "writing"],
+  "author": "python-0612",
+  "license": "MIT",
+  "files": [
+    "install.js",
+    "uninstall.js",
+    "cli.js",
+    "skills/",
+    "agents/"
+  ]
+}
