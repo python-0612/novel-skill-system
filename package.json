@@ -1,5 +1,5 @@
 {
-  "name": "@python-0612/novel-skill-system",
+  "name": "novel-skill-system",
   "version": "8.0.0",
   "description": "小说创作与视频生成助手：智能体分工协作系统。包含7个专业智能体和1个总经理，支持流水线模式。从想法到成品（小说+封面+短剧）全自动完成。",
   "main": "SKILL.md",
@@ -26,8 +26,5 @@
   "bugs": {
     "url": "https://github.com/python-0612/novel-skill-system/issues"
   },
-  "homepage": "https://github.com/python-0612/novel-skill-system#readme",
-  "publishConfig": {
-    "access": "public"
-  }
+  "homepage": "https://github.com/python-0612/novel-skill-system#readme"
 }
