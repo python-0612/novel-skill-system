@@ -1,10 +1,46 @@
 #!/usr/bin/env node
 
-const { execSync } = require('child_process');
+const fs = require('fs');
 const path = require('path');
+const os = require('os');
 
 const args = process.argv.slice(2);
 const command = args[0];
+
+const homeDir = os.homedir();
+
+const paths = {
+  agents: path.join(homeDir, '.opencode', 'agents'),
+  skills: path.join(homeDir, '.opencode', 'skills', 'novel'),
+  skillDir: path.join(homeDir, '.agents', 'skills', 'novel'),
+  config: path.join(homeDir, '.config', 'opencode')
+};
+
+const sourceDir = __dirname;
+
+const agentFiles = [
+  'novel-lead.md',
+  'novel-outline.md',
+  'novel-audit.md',
+  'novel-writer.md',
+  'novel-script.md',
+  'novel-material.md',
+  'novel-video.md'
+];
+
+function createDir(dirPath) {
+  if (!fs.existsSync(dirPath)) {
+    fs.mkdirSync(dirPath, { recursive: true });
+    console.log(`✓ 创建目录: ${dirPath}`);
+  }
+}
+
+function copyFile(source, target) {
+  if (fs.existsSync(source)) {
+    fs.copyFileSync(source, target);
+    console.log(`✓ 复制文件: ${path.basename(target)}`);
+  }
+}
 
 function showHelp() {
   console.log(`
@@ -24,13 +60,65 @@ function showHelp() {
 }
 
 function install() {
-  console.log('🚀 正在安装小说创作技能系统...');
-  execSync('node ' + path.join(__dirname, 'install.js'), { stdio: 'inherit' });
+  console.log('\n🚀 开始安装小说创作技能系统...\n');
+
+  createDir(paths.agents);
+  createDir(paths.skills);
+  createDir(paths.skillDir);
+  createDir(paths.config);
+
+  console.log('\n📦 安装智能体文件...');
+  agentFiles.forEach(file => {
+    const source = path.join(sourceDir, 'agents', file);
+    const target = path.join(paths.agents, file);
+    copyFile(source, target);
+  });
+
+  console.log('\n📦 安装技能文件...');
+  const skillSource = path.join(sourceDir, 'skills', 'SKILL.md');
+  const skillTarget = path.join(paths.skillDir, 'SKILL.md');
+  copyFile(skillSource, skillTarget);
+
+  console.log('\n📦 安装配置文件...');
+  const configSource = path.join(sourceDir, 'config', 'AGENTS.md');
+  const configTarget = path.join(paths.config, 'AGENTS.md');
+  copyFile(configSource, configTarget);
+
+  const novellaSource = path.join(sourceDir, 'config', 'novella.json');
+  const novellaTarget = path.join(paths.skills, 'novella.json');
+  copyFile(novellaSource, novellaTarget);
+
+  console.log('\n✅ 安装完成！\n');
+  console.log('📝 使用方法：');
+  console.log('   1. 重启OpenCode');
+  console.log('   2. 说"使用小说创作技能"或"调用novel skill"');
+  console.log('   3. 核心规则已自动加载，无需每次调用\n');
 }
 
 function uninstall() {
-  console.log('🗑️  正在卸载小说创作技能系统...');
-  execSync('node ' + path.join(__dirname, 'install.js') + ' uninstall', { stdio: 'inherit' });
+  console.log('\n🗑️  开始卸载小说创作技能系统...\n');
+
+  agentFiles.forEach(file => {
+    const target = path.join(paths.agents, file);
+    if (fs.existsSync(target)) {
+      fs.unlinkSync(target);
+      console.log(`✓ 删除文件: ${file}`);
+    }
+  });
+
+  const skillTarget = path.join(paths.skillDir, 'SKILL.md');
+  if (fs.existsSync(skillTarget)) {
+    fs.unlinkSync(skillTarget);
+    console.log(`✓ 删除文件: SKILL.md`);
+  }
+
+  const configTarget = path.join(paths.config, 'AGENTS.md');
+  if (fs.existsSync(configTarget)) {
+    fs.unlinkSync(configTarget);
+    console.log(`✓ 删除文件: AGENTS.md`);
+  }
+
+  console.log('\n✅ 卸载完成！\n');
 }
 
 switch (command) {

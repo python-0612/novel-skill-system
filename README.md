@@ -81,10 +81,26 @@ graph TB
 ### 1. 前置条件
 - 已安装 [OpenCode](https://opencode.ai)
 - 已配置 AI API 密钥
+- 已安装 Node.js（推荐用官方安装包或nvm）
 
 ### 2. 安装技能
 
 #### 方法一：npm一键安装（推荐）⭐
+
+```bash
+# 全局安装
+npm install -g novel-skill-opencode
+
+# 运行安装程序
+novel-skill install
+```
+
+如果提示找不到命令，请用 npx：
+```bash
+npx novel-skill install
+```
+
+#### 方法二：Git克隆安装
 
 ```bash
 # 克隆仓库
@@ -93,16 +109,11 @@ git clone https://github.com/python-0612/novel-skill-system.git
 # 进入目录
 cd novel-skill-system
 
-# 一键安装
+# 运行安装程序
 node install.js
 ```
 
-或者直接运行：
-```bash
-npx novel-skill-opencode install
-```
-
-#### 方法二：手动安装
+#### 方法三：手动安装
 
 **Windows系统：**
 ```powershell
@@ -142,18 +153,6 @@ cp novel-video.md ~/.opencode/agents/
 cp novella.json ~/.opencode/skills/novel/
 ```
 
-#### 方法二：Git克隆安装
-```bash
-# 克隆仓库
-git clone https://github.com/python-0612/novel-skill-system.git
-
-# 进入目录
-cd novel-skill-system
-
-# 复制文件（Windows用Copy-Item，Mac/Linux用cp）
-# 参考方法一的复制命令
-```
-
 ### 3. 验证安装
 安装完成后，重启OpenCode，然后说：
 - "使用小说创作技能"
@@ -161,13 +160,13 @@ cd novel-skill-system
 
 如果系统识别到技能，说明安装成功。
 
-### 2. 调用技能
+### 4. 调用技能
 每次对话开始时，说：
 - "使用小说创作技能"
 - 或"调用novel skill"
 - 或直接描述创作需求
 
-### 3. 流水线模式
+### 5. 流水线模式
 说"开启流水线模式"后，除以下关键节点外全部自动完成：
 - 大纲确认
 - 审计问题
