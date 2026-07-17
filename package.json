@@ -1,18 +1,33 @@
 {
-  "name": "daoguan-zhibo",
-  "version": "1.0.0",
-  "description": "道观破产，我改行直播 - 飞书SDK集成",
-  "main": "src/feishu-client.cjs",
-  "scripts": {
-    "test": "node src/test-sdk.cjs"
-  },
-  "keywords": [
-    "novel",
-    "feishu",
-    "lark"
+  "name": "@python-0612/novel-skill-system",
+  "version": "8.0.0",
+  "description": "小说创作与视频生成助手：智能体分工协作系统。包含7个专业智能体和1个总经理，支持流水线模式。从想法到成品（小说+封面+短剧）全自动完成。",
+  "main": "SKILL.md",
+  "files": [
+    "SKILL.md",
+    "LICENSE"
   ],
+  "keywords": [
+    "opencode",
+    "skill",
+    "novel",
+    "writing",
+    "video",
+    "创作",
+    "小说",
+    "短剧"
+  ],
+  "author": "python-0612",
   "license": "MIT",
-  "dependencies": {
-    "@larksuiteoapi/node-sdk": "^1.71.1"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/python-0612/novel-skill-system.git"
+  },
+  "bugs": {
+    "url": "https://github.com/python-0612/novel-skill-system/issues"
+  },
+  "homepage": "https://github.com/python-0612/novel-skill-system#readme",
+  "publishConfig": {
+    "access": "public"
   }
 }
