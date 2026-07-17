@@ -19,8 +19,17 @@ metadata:
 
 加载本 skill 时，以下资源自动就绪：
 - **SDK 路径**：`~/.agents/skills/novel/feishu-client.cjs`
-- **SDK 版本**：`@larksuiteoapi/node-sdk@1.71.1`（依赖已安装）
+- **SDK 版本**：`@larksuiteoapi/node-sdk@1.71.1`
 - **应用凭证**：自动从 `~/.opencode/skills/novel/feishu.json` 加载
+
+### npm 依赖安装
+
+```bash
+# 首次克隆或 node_modules 丢失时执行：
+cd ~/.agents/skills/novel && npm install
+```
+
+`node_modules/` 已加入 `.gitignore`，不会提交到 GitHub。拉取代码后需执行 `npm install` 安装依赖。
 
 任何智能体（总经理/大纲/审计/写文章/剧本/素材/视频）均可直接使用：
 ```js
