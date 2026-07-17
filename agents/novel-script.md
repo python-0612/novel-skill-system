@@ -1,6 +1,6 @@
 ---
 description: 负责分析章节内容，设计分镜剧本，规划镜头语言，生成视频提示词
-model: anthropic/claude-sonnet-4-5
+model: deepseek-v4-flash-free
 mode: subagent
 color: "#DDA0DD"
 steps: 35

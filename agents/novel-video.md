@@ -1,6 +1,6 @@
 ---
 description: 负责生成视频片段，合成完整视频，添加转场效果
-model: anthropic/claude-sonnet-4-5
+model: deepseek-v4-flash-free
 mode: subagent
 color: "#FF69B4"
 steps: 35

@@ -1,6 +1,6 @@
 ---
 description: 负责生成人物、场景、物品图片，管理素材库
-model: anthropic/claude-sonnet-4-5
+model: deepseek-v4-flash-free
 mode: subagent
 color: "#87CEEB"
 steps: 30

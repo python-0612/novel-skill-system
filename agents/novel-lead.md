@@ -1,6 +1,6 @@
 ---
 description: 小说创作项目总负责人，负责协调所有智能体，管理流水线模式，与用户沟通
-model: claude-sonnet-4-5
+model: deepseek-v4-flash-free
 mode: primary
 color: "#FF6B6B"
 steps: 50

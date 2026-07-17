@@ -1,6 +1,6 @@
 ---
 description: 负责生成小说大纲、名称、简介、世界观、角色设定、封面
-model: anthropic/claude-sonnet-4-5
+model: deepseek-v4-flash-free
 mode: subagent
 color: "#4ECDC4"
 steps: 40
