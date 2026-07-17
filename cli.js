@@ -10,7 +10,7 @@ const command = args[0];
 const homeDir = os.homedir();
 
 const paths = {
-  agents: path.join(homeDir, '.opencode', 'agents'),
+  agents: path.join(homeDir, '.config', 'opencode', 'agents'),
   skills: path.join(homeDir, '.opencode', 'skills', 'novel'),
   skillDir: path.join(homeDir, '.agents', 'skills', 'novel'),
   config: path.join(homeDir, '.config', 'opencode')
