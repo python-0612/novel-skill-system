@@ -1,0 +1,14 @@
+{
+  "image": {
+    "resolution": "1920x1080",
+    "model": "agnes-image-2.1-flash",
+    "api_endpoint": "https://apihub.agnes-ai.com/v1/v1/images/generations"
+  },
+  "video": {
+    "resolution": "480p",
+    "duration": 18,
+    "model": "agnes-video-v2.0",
+    "create_endpoint": "https://apihub.agnes-ai.com/v1/v1/videos",
+    "result_endpoint": "https://apihub.agnes-ai.com/v1/agnesapi?video_id="
+  }
+}
