@@ -1,6 +1,6 @@
 ---
 name: novel
-version: 9.3.0
+version: 9.4.0
 description: "小说创作与视频生成助手：智能体分工协作系统。包含7个专业智能体和1个总经理，支持流水线模式。从想法到成品（小说+封面+短剧）全自动完成。"
 author: python-0612
 license: MIT
@@ -2383,3 +2383,66 @@ AI：正在加载 novel skill... [自动加载]
 | 必须检查 | 每次操作前必须检查前置条件 |
 | 必须确认 | 用户确认后才能执行 |
 | 必须记录 | 记录操作计划和执行结果 |
+
+---
+
+## 完成通知系统（任务完成后弹窗提示）
+
+### 功能说明
+**⚠️ 重要：每个任务完成后，必须弹出Windows Toast通知！**
+
+### 通知脚本
+**位置**：`~/.codex/skills/novel/notify.ps1`
+
+**调用方式**：
+```powershell
+powershell -ExecutionPolicy Bypass -File "~/.codex/skills/novel/notify.ps1" -Message "消息内容" -Title "小说创作系统"
+```
+
+### 通知时机
+
+| 任务完成 | 通知消息示例 |
+|----------|--------------|
+| 大纲生成完成 | "大纲已生成完成，等待您的确认" |
+| 章节续写完成 | "第X章已创作完成，正在审计..." |
+| 审计通过 | "审计通过！章节质量合格" |
+| 素材生成完成 | "素材图片已生成完成" |
+| 视频生成完成 | "视频已生成完成，保存至项目目录" |
+| 流程全部完成 | "全部创作流程已完成！" |
+| 错误发生 | "操作失败：[错误原因]，请检查后重试" |
+
+### 通知规则
+
+1. **时机**：任务执行完毕后立即弹出
+2. **位置**：Windows右下角Toast通知
+3. **时长**：显示5秒后自动消失
+4. **内容**：由模型根据任务类型和结果自动生成
+5. **语言**：使用中文
+6. **简洁**：通知内容不超过2行
+
+### 通知模板
+
+**成功通知**：
+```powershell
+powershell -ExecutionPolicy Bypass -File "~/.codex/skills/novel/notify.ps1" -Message "第3章创作完成，正在审计中..."
+```
+
+**等待确认通知**：
+```powershell
+powershell -ExecutionPolicy Bypass -File "~/.codex/skills/novel/notify.ps1" -Message "大纲已生成完成，请确认后开始创作"
+```
+
+**错误通知**：
+```powershell
+powershell -ExecutionPolicy Bypass -File "~/.codex/skills/novel/notify.ps1" -Message "视频生成失败，请检查API配置"
+```
+
+### 通知触发场景
+
+| 场景 | 是否通知 |
+|------|----------|
+| 每个步骤完成 | ✅ 必须通知 |
+| 流水线模式自动继续 | ✅ 必须通知 |
+| 等待用户确认 | ✅ 必须通知 |
+| 错误发生 | ✅ 必须通知 |
+| 用户主动查询 | ❌ 不需要通知 |
